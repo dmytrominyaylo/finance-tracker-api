@@ -10,6 +10,13 @@ from app.schemas.category import (
     CategoryUpdate,
     CategoryList,
 )
+from app.schemas.transaction import (
+    TransactionType,
+    TransactionRead,
+    TransactionCreate,
+    TransactionUpdate,
+    TransactionList,
+)
 
 __all__ = [
     "UserCreate",
@@ -20,4 +27,9 @@ __all__ = [
     "CategoryUpdate",
     "CategoryList",
     "CategoryRead",
+    "TransactionType",
+    "TransactionCreate",
+    "TransactionUpdate",
+    "TransactionList",
+    "TransactionRead",
 ]
