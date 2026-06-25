@@ -17,6 +17,12 @@ from app.schemas.transaction import (
     TransactionUpdate,
     TransactionList,
 )
+from app.schemas.budget import (
+    BudgetCreate,
+    BudgetUpdate,
+    BudgetRead,
+    BudgetList,
+)
 
 __all__ = [
     "UserCreate",
@@ -32,4 +38,8 @@ __all__ = [
     "TransactionUpdate",
     "TransactionList",
     "TransactionRead",
+    "BudgetCreate",
+    "BudgetUpdate",
+    "BudgetRead",
+    "BudgetList",
 ]
