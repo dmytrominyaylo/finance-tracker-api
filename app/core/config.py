@@ -19,5 +19,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 30
 
+    TEST_DATABASE_URL: str = ""
+
 
 settings = Settings()
