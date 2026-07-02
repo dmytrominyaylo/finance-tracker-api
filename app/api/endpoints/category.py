@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 
 from app.api.dependencies import DBSession, CurrentUserId
-from app.exceptions.base import NotFoundException
+from app.exceptions.base import NotFoundException, ConflictException
 from app.repositories.category_repository import CategoryRepository
 from app.schemas.category import CategoryCreate, CategoryRead, CategoryList, CategoryUpdate
 from app.services.category_service import CategoryService
@@ -33,7 +33,13 @@ async def create_category(
     service: CategoryServiceDep,
     current_user_id: CurrentUserId,
 ):
-    return await service.create_category(payload, current_user_id)
+    try:
+        return await service.create_category(payload, current_user_id)
+    except ConflictException as e:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=e.detail,
+        )
 
 
 @router.get(
@@ -85,6 +91,11 @@ async def update_category(
     except NotFoundException as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
+            detail=e.detail,
+        )
+    except ConflictException as e:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
             detail=e.detail,
         )
 

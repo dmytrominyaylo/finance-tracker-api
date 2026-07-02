@@ -27,3 +27,12 @@ class CategoryRepository(BaseRepository[Category]):
         )
 
         return result.scalar_one_or_none()
+
+    async def get_by_name_and_user(self, name: str, user_id: int) -> Category | None:
+
+        result = await self._session.execute(
+            select(Category)
+            .where(Category.name == name, Category.user_id == user_id)
+        )
+
+        return result.scalar_one_or_none()

@@ -1,4 +1,4 @@
-from app.exceptions.base import NotFoundException
+from app.exceptions.base import NotFoundException, ConflictException
 from app.schemas.category import CategoryCreate, CategoryUpdate
 
 
@@ -8,6 +8,11 @@ class CategoryService:
         self._repo = repo
 
     async def create_category(self, payload: CategoryCreate, current_user_id: int):
+        existing = await self._repo.get_by_name_and_user(payload.name, current_user_id)
+
+        if existing:
+            raise ConflictException("Category with this name already exists")
+
         category_data = {
             "user_id": current_user_id,
             "name": payload.name,
@@ -37,6 +42,11 @@ class CategoryService:
 
         if not category:
             raise NotFoundException("Category not found")
+
+        existing = await self._repo.get_by_name_and_user(payload.name, current_user_id)
+
+        if existing and existing.id != category_id:
+            raise ConflictException("Category with this name already exists")
 
         category = await self._repo.update(category_id, {"name": payload.name})
 
