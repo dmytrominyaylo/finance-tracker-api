@@ -21,5 +21,11 @@ class Settings(BaseSettings):
 
     TEST_DATABASE_URL: str = ""
 
+    TELEGRAM_BOT_TOKEN: str = ""
+
+    HOST: str = "localhost"
+    PORT: int = 8000
+    API_PREFIX: str = "/api"
+
 
 settings = Settings()
