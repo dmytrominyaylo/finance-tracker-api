@@ -150,6 +150,24 @@ http://localhost:8000/docs
 4. Enter the token in the format: `Bearer your_token_here`
 5. Now all protected endpoints are available
 
+## 📸 Swagger Screenshots
+
+Here are some screenshots from the Swagger UI showcasing the API endpoints and example data.
+
+**All available endpoints:**
+![All Endpoints](docs/swagger/1.png)
+![All Endpoints](docs/swagger/2.png)
+![All Endpoints](docs/swagger/3.png)
+
+**Categories list:**
+![Categories List](docs/swagger/4.png)
+
+**Transactions list:**
+![Transactions List](docs/swagger/5.png)
+
+**Budgets list:**
+![Budgets List](docs/swagger/6.png)
+
 ## 🤖 Telegram Bot
 
 The project includes a Telegram bot that mirrors the API's functionality, letting users manage their finances directly from Telegram.
@@ -169,6 +187,25 @@ Make sure the API server is running, then in a separate terminal:
 ```bash
 python -m app.bot.main
 ```
+
+## 📸 Telegram Bot Screenshots
+
+Here are some screenshots from the Telegram bot showing the main flow — from sign in to viewing your balance.
+
+**Start screen:**
+![Start Screen](docs/telegram_bot/1.png)
+
+**Main menu:**
+![Main Menu](docs/telegram_bot/2.png)
+
+**Categories submenu:**
+![Categories Submenu](docs/telegram_bot/3.png)
+
+**Transactions list:**
+![Transactions List](docs/telegram_bot/4.png)
+
+**Balance breakdown by category:**
+![Balance Breakdown](docs/telegram_bot/5.png)
 
 ## 🧬 Running Tests
 
